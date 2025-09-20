@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.nav-container {
+    width: 100%;
+    height: 80px;
+    background-color: transparent;
+}
+.nav-icone img {
+    width: 40px;
+}
+.nav-logo {
+    position: relative;
+    left: 17px;
+}
+.nav-logo img {
+    width: 80px;
+}
+.nav-links {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.nav-links button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    background: #0077cc;
+}
+.nav-links button:hover {
+    background: #005fa3;
+}
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 59px;
+    padding-top: 6px;
+}
+
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: -291px;
+    width: 250px;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+.side-nav.show {
+    left: 0;
+}
+.close-btn {
+  font-size: 24px;
+  cursor: pointer;
+  display: block;
+  text-align: right;
+  margin-bottom: 20px;
+  color: white;
+}
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+}
+.side-nav ul li {
+  margin: 15px 0;
+}
+.side-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.2s ease;
+}
+.side-nav ul li a:hover {
+  color: #ffcc00;
+}
+
+.hidden {
+    display: none;
+}
+.hidden ul {
+    display: flex;
+    gap: 17px;
+}
+.hidden ul li {
+    list-style: none;
+}
+.hidden ul li a {
+    color: blue;
+    text-decoration: none;
+}
+@media (min-width:750px) {
+.hidden {
+    display: unset;
+}
+.nav-icone {
+    display: none;
+}
+
+.nav-container {
+  width: 100%;
+  height: 80px;
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  padding: 0 40px;
+}
+
+.nav-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top : 5%;
+}
+.nav-logo img {
+    width: 142px;
+}
+
+}
