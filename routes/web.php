@@ -47,9 +47,23 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::put('updateProduct/{id}', [ProductController::class, 'update'])->name('updateProduct');
 });
 
+Route::put('/updateInfo', [ProfileController::class, 'updateInfo'])
+    ->middleware(['auth', 'verified'])
+    ->name('updateInfo');
+
+Route::post('/insertInfoJaam', [ProfileController::class, 'insertInfoJaam'])
+    ->middleware(['auth', 'verified'])
+    ->name('insertInfoJaam');
+
 // Client routes (role = 0)
 Route::middleware(['auth', 'verified', 'client'])->group(function () {
     Route::get('/coops', [CoopController::class, 'index'])->name('coops.index');
     Route::get('/coops/{coop}', [CoopController::class, 'show'])->name('coops.show');
     Route::post('/products/{product}/comments', [CommentController::class, 'store'])->name('comments.store');
 });
+
+Route::post('/products/{product}/comments', [CommentController::class, 'store'])
+    ->name('comments.store')
+    ->middleware('auth');
+
+    // tesstoox

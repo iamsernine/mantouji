@@ -5,7 +5,7 @@
 .nav-container {
     width: 100%;
     height: 80px;
-    background-color: transparent;
+    background-color: #000000;
 }
 .nav-icone img {
     width: 40px;
@@ -16,6 +16,7 @@
 }
 .nav-logo img {
     width: 80px;
+    display: none;
 }
 .nav-links {
     display: flex;
@@ -28,20 +29,21 @@
     font-weight: bold;
 }
 .nav-links button {
-    padding: 8px 15px;
+    padding: 14px 24px;
     border: none;
-    border-radius: 3px;
-    background: #0077cc;
+    border-radius: 8px;
+    background: #FF7757;
+    transition: 0.5;
 }
 .nav-links button:hover {
-    background: #005fa3;
+    background: #ff7657c0;
 }
 .navbar {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 59px;
-    padding-top: 6px;
+    padding-top: 19px;
 }
 
 .side-nav {
@@ -95,7 +97,7 @@
     list-style: none;
 }
 .hidden ul li a {
-    color: blue;
+    color: white;
     text-decoration: none;
 }
 @media (min-width:750px) {
@@ -118,7 +120,7 @@
   align-items: center;
   height: 100%;
   position: relative;
-  padding: 0 40px;
+  padding: 0 100px;
 }
 
 .nav-logo {

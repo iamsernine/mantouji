@@ -20,4 +20,16 @@ class Product extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    // Average rating helper
+    public function averageRating()
+    {
+        return $this->comments()->avg('rating') ?: 0;
+    }
+
+    // Number of reviews (ratings)
+    public function reviewsCount()
+    {
+        return $this->comments()->whereNotNull('rating')->count();
+    }
 }

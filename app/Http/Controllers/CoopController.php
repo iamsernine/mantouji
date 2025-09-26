@@ -23,10 +23,12 @@ class CoopController extends Controller
     }
 
     public function show(JamInfo $coop)
-    {
-        // Load user and products with comments for show page
-        $coop->load('user', 'products.comments');
+{
+    $coop->load([
+        'user',
+        'products.comments.user', // only comments, no reviews
+    ]);
 
-        return view('coops.show', compact('coop'));
-    }
+    return view('coops.show', compact('coop'));
+}
 }
