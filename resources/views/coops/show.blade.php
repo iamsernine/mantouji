@@ -11,15 +11,21 @@
             cursor: pointer;
             color: #ccc;
             transition: color 0.2s;
+            outline: none;
         }
-        .star.selected {
+        .star.selected,
+        .star.hovered {
             color: #facc15; /* yellow-400 */
+        }
+        .star:focus {
+            outline: 2px solid #facc15;
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body class="bg-gray-100">
 
-<div class="container mx-auto px-4 py-6">
+<div class="container mx-auto px-2 sm:px-4 py-6">
 
     @if(session('success'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
@@ -41,7 +47,6 @@
         </div>
     @endif
     <div class="relative flex justify-center items-center mb-8">
-        
         <a href="{{ route('coops.index') }}" 
            class="absolute left-0 text-gray-600 hover:text-gray-800 transition-colors flex items-center text-sm font-semibold hover:underline">
            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -49,17 +54,16 @@
            </svg>
            Retour aux Coopératives
         </a>
-
         <img src="{{ asset('images/mantouj-removebg-preview.png') }}" 
               alt="Logo Mantouj" 
               class="h-16 object-contain">
     </div>
     
-    <div class="flex items-center mb-8"> 
+    <div class="flex flex-col sm:flex-row items-center mb-8"> 
         <img src="{{ $coop->user->image ? asset('images/' . $coop->user->image) : asset('images/default-coop.jpg') }}"
               alt="{{ $coop->user->name }}"
-              class="w-20 h-20 rounded-full mr-6 object-cover border-4 border-orange-600 flex-shrink-0">
-        <div>
+              class="w-20 h-20 rounded-full mr-0 sm:mr-6 mb-4 sm:mb-0 object-cover border-4 border-orange-600 flex-shrink-0">
+        <div class="text-center sm:text-left">
             <h1 class="text-3xl font-extrabold text-gray-800">Produits de {{ $coop->user->name }}</h1>
             <p class="text-gray-600 mt-1 italic">{{ $coop->description }}</p>
             @if($coop->contact)
@@ -70,23 +74,22 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div class="overflow-x-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 min-w-[320px]" style="min-width: 320px;">
         @forelse ($coop->products as $product)
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden p-2 sm:p-4 w-full max-w-xs mx-auto">
 
                 <div class="w-full h-48 flex items-center justify-center bg-white overflow-hidden p-2">
                     <img loading="lazy" src="{{ asset('storage/products/' . basename($product->image)) }}"
                           alt="{{ $product->name }}"
-                          class="max-h-full max-w-full object-contain transform hover:scale-105 transition-transform duration-500">
+                          class="max-h-full max-w-full object-contain" />
                 </div>
 
-                <div class="p-4 flex flex-col flex-grow">
+                <div class="flex flex-col flex-grow">
                     <h2 class="text-xl font-bold mb-2 text-gray-800 truncate">{{ $product->name }}</h2>
 
                     @php 
                         $avgRating = round($product->averageRating(), 1); 
-                        
-                        // Check if the current authenticated user has already submitted a REVIEW (rating > 0)
                         $userHasReviewed = auth()->check() && $product->comments()
                                                 ->where('user_id', auth()->id())
                                                 ->where('rating', '>', 0) 
@@ -102,7 +105,7 @@
                     </div>
 
                     <details class="mb-4">
-                        <summary class="cursor-pointer font-semibold text-orange-600 hover:text-orange-700 text-sm">Voir les Commentaires & Avis</summary>
+                        <summary class="cursor-pointer font-semibold text-orange-600 hover:text-orange-700 text-sm focus:outline-none">Voir les Commentaires & Avis</summary>
                         <div class="mt-3 space-y-3 max-h-48 overflow-y-auto pr-2 text-sm border-t pt-2">
                             @forelse ($product->comments as $comment)
                                 <div class="flex items-start bg-gray-50 p-3 rounded-lg border">
@@ -139,7 +142,7 @@
                                 <div class="flex mb-2 stars-container" data-product-id="{{ $product->id }}">
                                     <span class="text-sm font-medium text-gray-700 mr-2">Note:</span>
                                     @for ($i = 1; $i <= 5; $i++)
-                                        <span class="star" data-value="{{ $i }}">&#9733;</span>
+                                        <span class="star" data-value="{{ $i }}" role="button" tabindex="0" aria-label="Donner {{ $i }} étoile{{ $i > 1 ? 's' : '' }}">&#9733;</span>
                                     @endfor
                                 </div>
                                 <input type="hidden" name="rating" value="0" id="rating-{{ $product->id }}">
@@ -155,7 +158,7 @@
                                       placeholder="{{ $userHasReviewed ? 'Ajouter un autre commentaire simple (sans note)...' : 'Ajouter un commentaire ou un avis...' }}"></textarea>
                             
                             <button type="submit"
-                                class="w-full bg-orange-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-700 transition-colors text-sm shadow-sm">
+                                class="w-full bg-orange-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-700 transition-colors text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400">
                                 Publier
                             </button>
                         </form>
@@ -164,18 +167,18 @@
                             <p class="text-sm font-medium text-yellow-700">Connectez-vous pour laisser un avis.</p>
                         </div>
                     @endif
-                    </div>
+                </div>
             </div>
         @empty
             <p class="text-gray-600 text-center col-span-full py-10 text-xl font-medium">Aucun produit trouvé pour {{ $coop->user->name }}.</p>
         @endforelse
     </div>
+    </div>
 </div>
 
 <script>
-// The JS must be updated to only run on the stars-container if it is visible.
+// Improved accessibility and keyboard support for star rating
 document.querySelectorAll('.stars-container').forEach(container => {
-    // Only initialize JS for containers that are actually visible (i.e., user hasn't reviewed yet)
     if (container.closest('form')) { 
         const stars = container.querySelectorAll('.star');
         const productId = container.dataset.productId;
@@ -194,6 +197,34 @@ document.querySelectorAll('.stars-container').forEach(container => {
                  for (let i = 0; i <= index; i++) {
                      stars[i].classList.add('hovered');
                  }
+            });
+
+            star.addEventListener('focus', () => {
+                stars.forEach(s => s.classList.remove('hovered'));
+                for (let i = 0; i <= index; i++) {
+                    stars[i].classList.add('hovered');
+                }
+            });
+
+            star.addEventListener('blur', () => {
+                stars.forEach(s => s.classList.remove('hovered'));
+                updateStars();
+            });
+
+            star.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    currentRating = index + 1;
+                    hiddenInput.value = currentRating;
+                    updateStars();
+                }
+                // Arrow key navigation
+                if (e.key === 'ArrowLeft' && index > 0) {
+                    stars[index - 1].focus();
+                }
+                if (e.key === 'ArrowRight' && index < stars.length - 1) {
+                    stars[index + 1].focus();
+                }
             });
 
             container.addEventListener('mouseleave', () => {

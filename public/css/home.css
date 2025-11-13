@@ -164,7 +164,9 @@ html {
     gap: 430px;
 }
 .figuig-to-you-container {
-    height: 405px;
+    /* height: 405px; */
+    height: fit-content;
+    padding: 20px 0;
 }
 .figuig-to-you-content p:nth-child(2) {
     direction: rtl;
@@ -345,11 +347,12 @@ html {
         direction: rtl;
         border-top-left-radius: 270px;
         position: relative;
-        left: 285px;
+        /* left: 285px; */
         height: 531px;
         background-color: #EA8900;
         margin-bottom: 110px;
         border-bottom-right-radius: 0;
+        margin-left: auto;
     }
     .etapes-parte-1-header {
         padding-right: 53px;

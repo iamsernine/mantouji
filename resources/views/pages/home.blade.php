@@ -126,13 +126,20 @@
             <p>
                 هدفنا هو دعم الاقتصاد المحلي، إبراز هوية فكيك التراثية، وتقديم منتجات عالية الجودة مباشرة من المنتج إلى المستهلك.
             </p>
+
+            <div class="ligne">
+                <div class="ligne-container">
+                    <img src="/images/bg/ligne.jpeg" alt="" srcset="">
+                    <img src="/images/bg/ligne.jpeg" alt="" srcset="">
+                </div>
+            </div>
         </div>
-        <div class="ligne">
+        {{-- <div class="ligne">
             <div class="ligne-container">
                 <img src="/images/bg/ligne.jpeg" alt="" srcset="">
                 <img src="/images/bg/ligne.jpeg" alt="" srcset="">
             </div>
-        </div>
+        </div> --}}
     </div>
     <div class="auth" id="service">
         <div class="auth-header">

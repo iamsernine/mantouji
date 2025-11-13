@@ -46,7 +46,8 @@
             <h2>Add New Product</h2>
             <form action="{{ Route('addProduct') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="file" class="input" name="image">
+                <input type="file" class="input" name="image" id="imageInput">
+                <img id="previewImage" src="" alt="Preview" style="max-width:150px; margin-top:10px; display:none;">
                 <input type="text" placeholder="Product name" class="input" name="name">
                 <button class="add-btn" type="submite">Add Product</button>
             </form>
