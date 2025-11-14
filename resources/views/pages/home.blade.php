@@ -48,12 +48,11 @@
         </div>
         <div class="guide-right">
             <div class="guide-right-img-1">
-                <img src="/images/bg/fiig.png" alt="" srcset="">
+                <img src="{{ asset('images/bg/fiig.png') }}" alt="" srcset="">
             </div>
             <div class="guide-right-img-2">
-                <img src="/images/bg/fiig-2.png" alt="" srcset="">
+                <img src="{{ asset('images/bg/fiig-2.png') }}" alt="" srcset="">
             </div>
-        </div>
     </div>
 
     <div class="etapes-header">
