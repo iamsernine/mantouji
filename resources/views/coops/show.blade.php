@@ -24,6 +24,9 @@
         #fix-size-img{
             width:16% !important;
         }
+        #button-color {
+            background-color: #f97316;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -161,6 +164,7 @@
                                       placeholder="{{ $userHasReviewed ? 'Ajouter un autre commentaire simple (sans note)...' : 'Ajouter un commentaire ou un avis...' }}"></textarea>
                             
                             <button type="submit"
+                                id="button-color"
                                 class="w-full bg-orange-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-700 transition-colors text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400">
                                 Publier
                             </button>
