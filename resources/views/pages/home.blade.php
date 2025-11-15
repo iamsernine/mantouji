@@ -48,10 +48,10 @@
         </div>
         <div class="guide-right">
             <div class="guide-right-img-1">
-                <img src="{{ asset('images/bg/fiig.png') }}" alt="" srcset="">
+                <img src="{{ asset('images/bg/fiig.PNG') }}" alt="" srcset="">
             </div>
             <div class="guide-right-img-2">
-                <img src="{{ asset('images/bg/fiig-2.png') }}" alt="" srcset="">
+                <img src="{{ asset('images/bg/fiig-2.PNG') }}" alt="" srcset="">
             </div>
         </div>
     </div>

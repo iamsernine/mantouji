@@ -21,6 +21,9 @@
             outline: 2px solid #facc15;
             outline-offset: 2px;
         }
+        #fix-size-img{
+            width:16% !important;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -109,7 +112,7 @@
                         <div class="mt-3 space-y-3 max-h-48 overflow-y-auto pr-2 text-sm border-t pt-2">
                             @forelse ($product->comments as $comment)
                                 <div class="flex items-start bg-gray-50 p-3 rounded-lg border">
-                                    <img src="{{ $comment->user && $comment->user->image ? asset('images/' . $comment->user->image) : asset('images/default-user.jpg') }}"
+                                    <img id="fix-size-img" src="{{ $comment->user && $comment->user->image ? asset('images/' . $comment->user->image) : asset('images/default-user.jpg') }}"
                                           alt="{{ $comment->user ? $comment->user->name : 'Utilisateur Supprimé' }}"
                                           class="w-7 h-7 rounded-full mr-3 object-cover flex-shrink-0">
                                     <div class="flex-grow">
