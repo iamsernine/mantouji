@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/home.css">
-    <title>Home</title>
+    <title>Accueil - Mantouji</title>
 </head>
 <body>
     <div class="home">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="etapes-parte-1-content">
                     <img src="/images/bg/etape 1.PNG" alt="" srcset="">
-                    <p>Choisissez votre profil : Client pour acheter, ou Association pour vendre vos produits</p>
+                    <p>Choisissez votre profil : Client pour acheter, ou Coopérative pour vendre vos produits</p>
                     <p>Créez votre compte en quelques clics pour accéder à la plateforme</p>
                 </div>
             </div>
@@ -143,7 +143,7 @@
     </div>
     <div class="auth" id="service">
         <div class="auth-header">
-            <p>Please Tell us who you are !</p>
+            <p>Dites-nous qui vous êtes !</p>
         </div>
         <div class="auth-cards">
             <div class="card">
@@ -157,7 +157,7 @@
                 </div>
             </div>
             <div class="auth-card-or">
-                <p>OR</p>
+                <p>OU</p>
             </div>
             <div class="card">
                 <div class="card-content-header">
@@ -165,7 +165,7 @@
                         <div class="card-container-image">
                             <img src="/images/icones/store.png" alt="" srcset="">
                         </div>
-                        <p><a href="{{Route('register', ['type' => 1])}}">Association ?</a></p>
+                        <p><a href="{{Route('register', ['type' => 1])}}">Coopérative ?</a></p>
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@
 
                 <div class="footer-links">
                     <ul>
-                        <li style="font-weight: bold">Useful Links</li>
+                        <li style="font-weight: bold">Liens Utiles</li>
                         <li style="margin-top: 15px"><a href="#acc">Acceuile</a></li>
                         <li><a href="#propo">A propos</a></li>
                         <li><a href="#service">Services</a></li>
@@ -220,9 +220,9 @@
             </div>
             <div class="footer-terms">
                 <ul>
-                    <li>Terms</li>
-                    <li>Privacy</li>
-                    <li>Police and Cookie Policy</li>
+                    <li>Conditions</li>
+                    <li>Confidentialité</li>
+                    <li>Politique des Cookies</li>
                 </ul>
             </div>
         </div>

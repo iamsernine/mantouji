@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/jammiya.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Document</title>
+    <title>Tableau de bord - Mantouji</title>
 </head>
 <body>
     <nav class="navbar">
@@ -16,10 +16,10 @@
     <div class="space-x"></div>
 
     <div id="sidebar" class="sidebar">
-        <button class="side-btn">See Products</button>
-        <button id="openModal" class="side-btn">Add New Product</button>
-        <button id="openModal" class="side-btn"><a href="{{Route('viewPageInfo')}}">Add Or Edite Information</a></button>
-        <button id="openModal" class="side-btn"><a href="{{Route('profile.edit')}}">Profile</a></button>
+        <button class="side-btn">Voir les Produits</button>
+        <button id="openModal" class="side-btn">Ajouter un Produit</button>
+        <button id="openModal" class="side-btn"><a href="{{Route('viewPageInfo')}}">Modifier les Informations</a></button>
+        <button id="openModal" class="side-btn"><a href="{{Route('profile.edit')}}">Profil</a></button>
         <div class="sidebar-content">
             <div class="sidebar-logo">
                 <img src="/images/logo.png" alt="" srcset="">
@@ -29,7 +29,7 @@
                     <div class="sidebar-footer-item">
                         <form action="{{Route('logout')}}" method="post">
                             @csrf
-                            <button type="submit">Logout</button>
+                            <button type="submit">Déconnexion</button>
                         </form>
                     </div>
                     <div class="sidebar-footer-item">
@@ -43,20 +43,20 @@
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span id="closeModal" class="close">&times;</span>
-            <h2>Add New Product</h2>
+            <h2>Ajouter un Nouveau Produit</h2>
             <form action="{{ Route('addProduct') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="file" class="input" name="image" id="imageInput">
                 <img id="previewImage" src="" alt="Preview" style="max-width:150px; margin-top:10px; display:none;">
-                <input type="text" placeholder="Product name" class="input" name="name">
-                <button class="add-btn" type="submite">Add Product</button>
+                <input type="text" placeholder="Nom du produit" class="input" name="name">
+                <button class="add-btn" type="submite">Ajouter le Produit</button>
             </form>
         </div>
     </div>
 
    <div class="main-content">
         <div class="header">
-            <p>Products</p>
+            <p>Produits</p>
         </div>
 
         <div class="content">
