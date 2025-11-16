@@ -514,3 +514,82 @@ html {
         display: unset;
     }
 }
+
+@media (max-width: 480px) {
+
+    .home {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .logo {
+        position: relative !important;
+        padding-top: 10px;
+        margin-bottom: 15px;
+    }
+    .logo img {
+        width: 120px;
+    }
+
+    .left-content p:nth-child(1) {
+        font-size: 22px !important;
+    }
+    .left-content p:nth-child(2) {
+        font-size: 16px !important;
+    }
+
+    .btn-home {
+        width: 90% !important;
+        height: 60px;
+        border-radius: 30px;
+    }
+    .btn-home div a {
+        font-size: 16px !important;
+        padding: 0;
+    }
+
+    .etapes-parte-1-content img,
+    .etapes-parte-2 img {
+        width: 120px !important;
+    }
+
+    .etapes,
+    .etapes-r {
+        height: auto !important;
+        border-bottom-left-radius: 100px !important;
+        border-bottom-right-radius: 100px !important;
+        padding: 20px 10px;
+    }
+
+    .etapes-parte-1 p:nth-child(1) {
+        font-size: 20px !important;
+    }
+    .etapes-parte-1 p:nth-child(2) {
+        font-size: 18px !important;
+    }
+    .etapes-parte-1-content p {
+        padding: 4px 15px !important;
+        font-size: 14px !important;
+    }
+
+    .guide-right-img-1 img {
+        width: 180px !important;
+    }
+
+    .figuig-to-you-content {
+        padding: 0 20px !important;
+        font-size: 15px !important;
+        line-height: 20px !important;
+    }
+
+    .footer-logo img {
+        width: 130px;
+    }
+    .footer-links-container {
+        gap: 20px !important;
+        padding: 10px 0;
+    }
+    .footer-links ul li {
+        font-size: 14px !important;
+    }
+}
