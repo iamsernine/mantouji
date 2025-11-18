@@ -18,6 +18,7 @@
                 <div class="left-content">
                     <p>ثروة فكيك في كل <span>منتج</span></p>
                     <p>تمور وحرف فكيك… أصالة تعبر الأجيال</p>
+                    <h2>Teest</h2>
                 </div>
             </div>
         </div>
