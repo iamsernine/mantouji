@@ -3,11 +3,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const sideNav = document.getElementById("side-nav");
   const closeNav = document.getElementById("close-nav");
 
-  navToggle.addEventListener("click", function () {
-    sideNav.classList.add("show");
-  });
+  // Vérifier que tous les éléments existent avant d'ajouter les event listeners
+  if (navToggle && sideNav && closeNav) {
+    navToggle.addEventListener("click", function () {
+      sideNav.classList.add("show");
+    });
 
-  closeNav.addEventListener("click", function () {
-    sideNav.classList.remove("show");
-  });
+    closeNav.addEventListener("click", function () {
+      sideNav.classList.remove("show");
+    });
+  }
 });
