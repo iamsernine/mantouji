@@ -8,10 +8,10 @@
         menuBtnx.addEventListener('click', () => {
             sidebar.classList.toggle('open');
         });
-
+        if (openModalBtn) {
         openModalBtn.addEventListener('click', () => {
             modal.style.display = 'flex';
-        });
+        })};
 
         closeModalBtn.addEventListener('click', () => {
             modal.style.display = 'none';

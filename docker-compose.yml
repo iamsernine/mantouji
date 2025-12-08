@@ -68,7 +68,7 @@ services:
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD: nereus
     networks:
       - mantouji-network
     depends_on:
