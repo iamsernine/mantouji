@@ -1,68 +1,103 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\ProductController as PublicProductController;
+use App\Http\Controllers\Public\CooperativeController as PublicCooperativeController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CooperativeController as AdminCooperativeController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\SectorController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CoopController;
-use App\Http\Controllers\CommentController;
 
+/*
+|--------------------------------------------------------------------------
+| Routes Publiques (sans authentification)
+|--------------------------------------------------------------------------
+*/
 
+// Page d'accueil avec tous les produits et filtres
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Pages produits publiques
+Route::get('/products/{product}', [PublicProductController::class, 'show'])->name('products.show');
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+// Pages coopératives publiques
+Route::get('/cooperatives', [PublicCooperativeController::class, 'index'])->name('cooperatives.index');
+Route::get('/cooperatives/{cooperative}', [PublicCooperativeController::class, 'show'])->name('cooperatives.show');
 
-// Auth routes (Breeze)
+/*
+|--------------------------------------------------------------------------
+| Routes Authentification (Laravel Breeze)
+|--------------------------------------------------------------------------
+*/
+
 require __DIR__.'/auth.php';
 
+/*
+|--------------------------------------------------------------------------
+| Routes Clients Authentifiés (pour laisser des avis)
+|--------------------------------------------------------------------------
+*/
 
-
-// Routes accessible by any authenticated user
 Route::middleware(['auth', 'verified'])->group(function () {
+    // Soumettre un avis sur un produit
+    Route::post('/products/{product}/reviews', [PublicProductController::class, 'storeReview'])
+        ->name('products.reviews.store');
+    
+    // Profil utilisateur
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    // Main dashboard redirects based on role
-    Route::get('/dashboard', function () {
-        $user = Auth::user();
-        if ($user->role === 1) return redirect()->route('jammiya');      // Coop/Jm3iya
-        return redirect()->route('coops.index');                          // Client
-    })->name('dashboard');
 });
 
-Route::get('/viewPageInfo', [ProfileController::class, 'viewPageInfoController'])
-    ->middleware(['auth', 'verified'])
-    ->name('viewPageInfo');
+/*
+|--------------------------------------------------------------------------
+| Routes Admin (gestion complète)
+|--------------------------------------------------------------------------
+*/
 
-
-// Coop / Jm3iya routes (role = 1)
-Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-    Route::get('/jammiya', [ProductController::class, 'show'])->name('jammiya');
-    Route::post('/addProduct', [ProductController::class, 'store'])->name('addProduct');
-    Route::delete('/deleteProduct/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
-    Route::get('editeProduct/{id}', [ProductController::class, 'edite'])->name('editeProduct');
-    Route::put('updateProduct/{id}', [ProductController::class, 'update'])->name('updateProduct');
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // Gestion des coopératives
+    Route::resource('cooperatives', AdminCooperativeController::class);
+    Route::post('/cooperatives/{cooperative}/toggle-status', [AdminCooperativeController::class, 'toggleStatus'])
+        ->name('cooperatives.toggle-status');
+    
+    // Gestion des produits
+    Route::resource('products', AdminProductController::class);
+    Route::post('/products/{product}/toggle-status', [AdminProductController::class, 'toggleStatus'])
+        ->name('products.toggle-status');
+    
+    // Gestion des filières
+    Route::resource('sectors', SectorController::class)->except(['show']);
+    
+    // Gestion des utilisateurs
+    Route::resource('users', UserController::class);
+    Route::post('/users/{user}/toggle-status', [UserController::class, 'toggleStatus'])
+        ->name('users.toggle-status');
+    
+    // Gestion des avis (modération)
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::post('/reviews/{review}/approve', [ReviewController::class, 'approve'])->name('reviews.approve');
+    Route::post('/reviews/{review}/reject', [ReviewController::class, 'reject'])->name('reviews.reject');
+    Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 });
 
-Route::put('/updateInfo', [ProfileController::class, 'updateInfo'])
-    ->middleware(['auth', 'verified'])
-    ->name('updateInfo');
+/*
+|--------------------------------------------------------------------------
+| Redirection du dashboard par défaut
+|--------------------------------------------------------------------------
+*/
 
-Route::post('/insertInfoJaam', [ProfileController::class, 'insertInfoJaam'])
-    ->middleware(['auth', 'verified'])
-    ->name('insertInfoJaam');
-
-// Client routes (role = 0)
-Route::middleware(['auth', 'verified', 'client'])->group(function () {
-    Route::get('/coops', [CoopController::class, 'index'])->name('coops.index');
-    Route::get('/coops/{coop}', [CoopController::class, 'show'])->name('coops.show');
-    Route::post('/products/{product}/comments', [CommentController::class, 'store'])->name('comments.store');
-});
-
-Route::post('/products/{product}/comments', [CommentController::class, 'store'])
-    ->name('comments.store')
-    ->middleware('auth');
+Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
+    if (auth()->user()->isAdmin()) {
+        return redirect()->route('admin.dashboard');
+    }
+    return redirect()->route('home');
+})->name('dashboard');

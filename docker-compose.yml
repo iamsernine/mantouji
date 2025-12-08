@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # Application PHP-FPM
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mantouji-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./storage:/var/www/storage
+      - ./bootstrap/cache:/var/www/bootstrap/cache
+    networks:
+      - mantouji-network
+    depends_on:
+      - mysql
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=mantouji
+      - DB_USERNAME=mantouji_user
+      - DB_PASSWORD=mantouji_password
+
+  # Nginx Web Server
+  nginx:
+    image: nginx:alpine
+    container_name: mantouji-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - mantouji-network
+    depends_on:
+      - app
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: mantouji-mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: mantouji
+      MYSQL_USER: mantouji_user
+      MYSQL_PASSWORD: mantouji_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mantouji.sql:/docker-entrypoint-initdb.d/mantouji.sql
+    networks:
+      - mantouji-network
+
+  # phpMyAdmin (optionnel, pour la gestion de la base de données)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: mantouji-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root_password
+    networks:
+      - mantouji-network
+    depends_on:
+      - mysql
+
+networks:
+  mantouji-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local

@@ -1,0 +1,167 @@
+/* Palette de couleurs Figuig */
+:root {
+    /* Couleurs principales */
+    --oasis-green: #2D5016;
+    --palm-green: #4A7C2C;
+    --desert-sand: #D4A574;
+    --terracotta: #C65D3B;
+    --sky-blue: #87CEEB;
+    --earth-brown: #8B4513;
+    
+    /* Couleurs secondaires */
+    --light-sand: #F5E6D3;
+    --dark-green: #1A3409;
+    --gold: #D4AF37;
+}
+
+/* Classes utilitaires pour les couleurs */
+.bg-oasis-green { background-color: var(--oasis-green); }
+.bg-palm-green { background-color: var(--palm-green); }
+.bg-desert-sand { background-color: var(--desert-sand); }
+.bg-terracotta { background-color: var(--terracotta); }
+.bg-sky-blue { background-color: var(--sky-blue); }
+.bg-earth-brown { background-color: var(--earth-brown); }
+.bg-light-sand { background-color: var(--light-sand); }
+.bg-dark-green { background-color: var(--dark-green); }
+.bg-gold { background-color: var(--gold); }
+
+.text-oasis-green { color: var(--oasis-green); }
+.text-palm-green { color: var(--palm-green); }
+.text-desert-sand { color: var(--desert-sand); }
+.text-terracotta { color: var(--terracotta); }
+.text-sky-blue { color: var(--sky-blue); }
+.text-earth-brown { color: var(--earth-brown); }
+.text-light-sand { color: var(--light-sand); }
+.text-dark-green { color: var(--dark-green); }
+.text-gold { color: var(--gold); }
+
+.border-oasis-green { border-color: var(--oasis-green); }
+.border-palm-green { border-color: var(--palm-green); }
+.border-desert-sand { border-color: var(--desert-sand); }
+.border-terracotta { border-color: var(--terracotta); }
+.border-gold { border-color: var(--gold); }
+
+/* Hover states */
+.hover\:bg-palm-green:hover { background-color: var(--palm-green); }
+.hover\:text-palm-green:hover { color: var(--palm-green); }
+.hover\:text-oasis-green:hover { color: var(--oasis-green); }
+
+/* Animations et transitions */
+.transition-smooth {
+    transition: all 0.3s ease-in-out;
+}
+
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Bouton WhatsApp personnalisé */
+.whatsapp-button {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Système de notation (étoiles) */
+.rating-stars {
+    display: flex;
+    gap: 4px;
+}
+
+.rating-star {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rating-star:hover {
+    transform: scale(1.2);
+}
+
+/* Filtres élégants */
+.filter-dropdown {
+    background: white;
+    border: 2px solid var(--light-sand);
+    border-radius: 8px;
+    padding: 10px 16px;
+    transition: all 0.3s ease;
+}
+
+.filter-dropdown:focus {
+    outline: none;
+    border-color: var(--oasis-green);
+    box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+}
+
+/* Cards produits */
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--light-sand);
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--gold);
+}
+
+.product-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Badge de statut */
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-active {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+.badge-inactive {
+    background-color: #FEE2E2;
+    color: #991B1B;
+}
+
+/* Gradient backgrounds */
+.gradient-oasis {
+    background: linear-gradient(135deg, var(--oasis-green) 0%, var(--palm-green) 100%);
+}
+
+.gradient-desert {
+    background: linear-gradient(135deg, var(--desert-sand) 0%, var(--gold) 100%);
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+    .product-card-image {
+        height: 150px;
+    }
+}
