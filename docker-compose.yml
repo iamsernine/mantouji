@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Application PHP-FPM
   app:
@@ -54,7 +52,7 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./mantouji.sql:/docker-entrypoint-initdb.d/mantouji.sql
+      - ./database_schema.sql:/docker-entrypoint-initdb.d/database_schema.sql
     networks:
       - mantouji-network
 

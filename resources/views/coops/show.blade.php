@@ -21,8 +21,8 @@
             outline: 2px solid #facc15;
             outline-offset: 2px;
         }
-        #fix-size-img{
-            width:16% !important;
+        #fix-size-img {
+            width: 16% !important;
         }
         #button-color {
             background-color: #f97316;
@@ -159,7 +159,7 @@
                                 <input type="hidden" name="rating" value="0"> 
                             @endif
 
-                            <textarea name="comment" rows="2" 
+                            <textarea name="comment" rows="2"
                                       class="w-full p-2 border border-gray-300 rounded-lg text-gray-700 mb-2 text-sm focus:ring-orange-500 focus:border-orange-500" 
                                       placeholder="{{ $userHasReviewed ? 'Ajouter un autre commentaire simple (sans note)...' : 'Ajouter un commentaire ou un avis...' }}"></textarea>
                             

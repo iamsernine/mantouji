@@ -4,7 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\ClientMiddleware;
-use App\Http\Middleware\EnsureUserIsAdmin;
+
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -14,8 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
-            'admin' => EnsureUserIsAdmin::class,
-            'old_admin' => \App\Http\Middleware\AdminMiddleware::class,
+            'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'client' => ClientMiddleware::class,
         ]);
     })

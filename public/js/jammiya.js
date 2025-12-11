@@ -8,10 +8,10 @@
         menuBtnx.addEventListener('click', () => {
             sidebar.classList.toggle('open');
         });
-        if (openModalBtn) {
+
         openModalBtn.addEventListener('click', () => {
             modal.style.display = 'flex';
-        })};
+        });
 
         closeModalBtn.addEventListener('click', () => {
             modal.style.display = 'none';
@@ -42,14 +42,3 @@
         }
     });
 
-function toggleComments(id) {
-    let box = document.getElementById(id);
-    if (box.style.display === "none" || box.style.display === "") {
-        box.style.opacity = 0;
-        box.style.display = "block";
-        setTimeout(() => box.style.opacity = 1, 10);
-    } else {
-        box.style.opacity = 0;
-        setTimeout(() => box.style.display = "none", 300);
-    }
-}
