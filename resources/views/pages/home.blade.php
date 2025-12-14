@@ -65,33 +65,6 @@
 </style>
 </head>
 <body>
-    <!-- <div class="home">
-        <x-navbar />
-        <div class="content-container" id="Accueil">
-            <div class="logo">
-                <img src="/images/logo.png" alt="" srcset="">
-            </div>
-            <div class="content">
-                <div class="left-content">
-                    <p>La richesse de Figuig dans chaque <span>produit</span></p>
-                    <p>تمور وحرف فكيك… أصالة تعبر الأجيال</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="btn-home">
-            <div class="btn-home-left"><a href="#service">S'inscrire</a></div>
-            <div class="btn-home-right">
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ url('/dashboard') }}">Bienvennue !</a>
-                    @else
-                        <a href="{{Route('login')}}">Déjà-inscrit ?</a>
-                    @endauth
-                @endif
-            </div>
-        </div>
-    </div> -->
 <x-navbar />
 <section
     id="hero"
@@ -167,81 +140,210 @@
     </div>
 </section>
 
-    <div class="guide-container">
-        <div class="guide-left">
-            <div class="guide-left-text">
-                <p>Votre guide vers les meilleurs produits de Figuig ✨</p>
-            </div>
-            <div class="guide-left-ste">
-                <p>Get iton</p>
-                <p>🌐   Www.Mantouji.org</p>
-            </div>
-        </div>
-        <div class="guide-right">
-            <div class="guide-right-img-1">
-                <img src="{{ asset('images/bg/fiig.png') }}" alt="" srcset="">
-            </div>
-            <div class="guide-right-img-2">
-                <img src="{{ asset('images/bg/fiig-2.png') }}" alt="" srcset="">
-            </div>
-        </div>
-    </div>
+    <section id="about" class="py-24 bg-white pattern-moroccan" dir="rtl">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-    <div class="etapes-header">
-        <p>Découvrez rapidement !</p>
-    </div>
-    <div class="etapes-container">
-        <div class="etapes">
-            <div class="etapes-parte-1">
-                <div class="etapes-parte-1-header">
-                    <p>Etape 1</p>
-                    <p>Choisir Ton Profil</p>
-                </div>
-                <div class="etapes-parte-1-content">
-                    <img src="/images/bg/etape 1.PNG" alt="" srcset="">
-                    <p>Choose th way u wanna join us with </p>
-                    <p>A range of powerful tools for viewing, querying and filtering your data.</p>
-                </div>
-            </div>
-            <div class="etapes-parte-2">
-                <img src="/images/bg/etape 1 circle.png" alt="" srcset="">
-            </div>
-        </div>
+                <!-- Image Side -->
+                <div class="relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img 
+                            src="{{ asset('images/bg/cooperative-1.jpg') }}" 
+                            alt="تعاونيات فكيك"
+                            class="w-full h-[500px] object-cover"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent"></div>
+                    </div>
 
-        <div class="etapes-r">
-            <div class="etapes-parte-1">
-                <div class="etapes-parte-1-header">
-                    <p>Etape 2</p>
-                    <p>Créer Votre Compte</p>
+                    <!-- Floating Card -->
+                    <div class="absolute -bottom-8 -left-8 glass-card rounded-2xl p-6 max-w-xs animate-float">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                                <i data-lucide="users" class="w-7 h-7 text-primary"></i>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-foreground">+50</div>
+                                <div class="text-gray-400 text-sm">تعاونية شريكة</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="etapes-parte-1-content">
-                    <img src="/images/bg/etape 2.PNG" alt="" srcset="">
-                    <p class="etapes-parte-1-content-r">Choose th way u wanna join us with  </p>
-                    <p class="etapes-parte-1-content-r">A range of powerful tools for viewing, querying and filtering your data.</p>
-                </div>
-            </div>
-            <div class="etapes-parte-2-r">
-                <img src="/images/bg/etape 2 circle.png" alt="" srcset="">
-            </div>
-        </div>
 
-        <div class="etapes">
-            <div class="etapes-parte-1">
-                <div class="etapes-parte-1-header">
-                    <p>Etape 3</p>
-                    <p>laisser Vos Avis</p>
+                <!-- Content Side -->
+                <div>
+                    <span class="text-primary font-semibold text-sm tracking-wide uppercase">
+                        من نحن
+                    </span>
+
+                    <h2 class="font-amiri text-4xl md:text-5xl font-bold text-black mt-3 mb-6">
+                        من فكيك <span class="text-gradient">إليك</span>
+                    </h2>
+
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        منتوجي هي منصة رقمية تهدف إلى ربط تعاونيات واحة فكيك بالعملاء في جميع 
+                        أنحاء المغرب والعالم. نحن نؤمن بأن كل منتج من فكيك يحمل قصة وتراثاً غنياً 
+                        يستحق أن يصل إلى كل بيت.
+                    </p>
+
+                    <!-- Features Grid -->
+                    <div class="grid sm:grid-cols-2 gap-6">
+
+                        <!-- Item 1 -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-card transition-colors duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                                <i data-lucide="heart" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-foreground mb-1">منتجات أصيلة</h3>
+                                <p class="text-gray-400 text-sm">
+                                    نقدم لك أجود منتجات واحة فكيك الطبيعية والتقليدية
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-card transition-colors duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                                <i data-lucide="users" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-foreground mb-1">دعم التعاونيات</h3>
+                                <p class="text-gray-400 text-sm">
+                                    نساعد التعاونيات المحلية على الوصول إلى أسواق أوسع
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-card transition-colors duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                                <i data-lucide="award" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-foreground mb-1">جودة مضمونة</h3>
+                                <p class="text-gray-400 text-sm">
+                                    جميع منتجاتنا تخضع لمعايير جودة صارمة
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-card transition-colors duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                                <i data-lucide="trending-up" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-foreground mb-1">تنمية مستدامة</h3>
+                                <p class="text-gray-400 text-sm">
+                                    نسعى لتحقيق التنمية الاقتصادية المستدامة للمنطقة
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
-                <div class="etapes-parte-1-content">
-                    <img src="/images/bg/etape 3.PNG" alt="" srcset="">
-                    <p>Choose th way u wanna join us with </p>
-                    <p>A range of powerful tools for viewing, querying and filtering your data.</p>
-                </div>
-            </div>
-            <div class="etapes-parte-2">
-                <img src="/images/bg/etape 3 circle.png" alt="" srcset="">
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="py-24 bg-gray-100" dir="rtl">
+        <div class="container mx-auto px-4">
+
+            {{-- Header --}}
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-primary font-semibold text-sm tracking-wide uppercase">
+                    كيف يعمل
+                </span>
+
+                <h2 class="font-amiri text-4xl md:text-5xl font-bold text-black mt-3 mb-6">
+                    اكتشف <span class="text-gradient">بسرعة!</span>
+                </h2>
+
+                <p class="text-muted-foreground text-lg">
+                    خطوات بسيطة للبدء في رحلتك مع منتوجي
+                </p>
+            </div>
+
+            {{-- Steps --}}
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                {{-- Step 1 --}}
+                <div class="group relative bg-white rounded-md shadow-md">
+                    <div class="absolute -top-4 right-6 bg-primary text-primary-foreground text-sm font-bold px-3 py-1 rounded-full">
+                        01
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-8 h-full hover-lift group-hover:border-primary/30 transition-all duration-500">
+                        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                            <i data-lucide="user-plus" class="w-8 h-8 text-primary"></i>
+                        </div>
+
+                        <h3 class="font-semibold text-xl text-black mb-3">اختر ملفك الشخصي</h3>
+                        <p class="text-muted-foreground leading-relaxed">
+                            حدد دورك: عميل للشراء، أو تعاونية لعرض وبيع منتجاتك
+                        </p>
+                    </div>
+                </div>
+
+                {{-- Step 2 --}}
+                <div class="group relative bg-white rounded-md shadow-md">
+                    <div class="absolute -top-4 right-6 bg-primary text-primary-foreground text-sm font-bold px-3 py-1 rounded-full">
+                        02
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-8 h-full hover-lift group-hover:border-primary/30 transition-all duration-500">
+                        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                            <i data-lucide="clipboard-list" class="w-8 h-8 text-primary"></i>
+                        </div>
+
+                        <h3 class="font-semibold text-xl text-black mb-3">أنشئ حسابك</h3>
+                        <p class="text-muted-foreground leading-relaxed">
+                            املأ استمارة التسجيل بمعلوماتك وسيتم تفعيل حسابك فوراً
+                        </p>
+                    </div>
+                </div>
+
+                {{-- Step 3 --}}
+                <div class="group relative bg-white rounded-md shadow-md">
+                    <div class="absolute -top-4 right-6 bg-primary text-primary-foreground text-sm font-bold px-3 py-1 rounded-full">
+                        03
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-8 h-full hover-lift group-hover:border-primary/30 transition-all duration-500">
+                        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                            <i data-lucide="shopping-bag" class="w-8 h-8 text-primary"></i>
+                        </div>
+
+                        <h3 class="font-semibold text-xl text-black mb-3">تصفح وتسوق</h3>
+                        <p class="text-muted-foreground leading-relaxed">
+                            اكتشف منتجات فكيك الأصيلة واختر ما يناسبك
+                        </p>
+                    </div>
+                </div>
+
+                {{-- Step 4 --}}
+                <div class="group relative bg-white rounded-md shadow-md">
+                    <div class="absolute -top-4 right-6 bg-primary text-primary-foreground text-sm font-bold px-3 py-1 rounded-full">
+                        04
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-8 h-full hover-lift group-hover:border-primary/30 transition-all duration-500">
+                        <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                            <i data-lucide="message-square" class="w-8 h-8 text-primary"></i>
+                        </div>
+
+                        <h3 class="font-semibold text-xl text-black mb-3">شارك رأيك</h3>
+                        <p class="text-muted-foreground leading-relaxed">
+                            قيّم المنتجات وشارك تجربتك لمساعدة الآخرين
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 
     <div class="figuig-to-you-container" id="propo">
         <div class="figuig-to-you"> 

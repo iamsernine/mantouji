@@ -67,23 +67,28 @@
         </nav>
     </div>
 </header>
+
 <script>
     const header = document.getElementById("mainHeader");
+    const navLinks = document.querySelectorAll("nav a");
 
     window.addEventListener("scroll", () => {
         if (window.scrollY > 20) {
             header.classList.add("bg-background/95", "backdrop-blur-md", "shadow-md");
             header.classList.remove("bg-transparent");
+
+            navLinks.forEach(link => {
+                link.classList.remove("text-primary-foreground");
+                link.classList.add("text-white");
+            });
         } else {
             header.classList.remove("bg-background/95", "backdrop-blur-md", "shadow-md");
             header.classList.add("bg-transparent");
+
+            navLinks.forEach(link => {
+                link.classList.remove("text-white");
+                link.classList.add("text-primary-foreground");
+            });
         }
-    });
-
-    const mobileBtn = document.getElementById("mobileMenuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    mobileBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
     });
 </script>
